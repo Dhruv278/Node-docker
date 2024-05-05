@@ -1,0 +1,21 @@
+version: "3"
+services:
+  nginx:
+    ports:
+      - "80:80"
+  node-app:
+    build: 
+      context: .
+      args:
+        - NODE_ENV=PRODUCTION
+    environment:
+      - MONGO_USERNAME=Dhruv
+      - MONGO_PASSWORD=Dhruv278
+      - MONGO_IP=mongo
+      - SESSION_SECRET=SESSION_SECRET_DHRUV
+      - NODE_ENV=PRODUCTION
+    command: node index.js
+  mongo:
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=Dhruv
+      - MONGO_INITDB_ROOT_PASSWORD=Dhruv278

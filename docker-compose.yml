@@ -1,0 +1,26 @@
+version: "3"
+services:
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+  node-app:
+    build: .
+    image: dhruv278/node_docker_dhruv
+    volumes:
+      - ./:/app
+      - /app/node_modules
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo
+    
+    volumes:
+      - mongo-db:/data/db
+  redis:
+    image: redis
+    expose:
+      - 6379
+volumes:
+  mongo-db: 
+
