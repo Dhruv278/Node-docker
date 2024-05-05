@@ -34,13 +34,14 @@ app.use(session({
 
 
 
-
+console.log(`mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSOurce=admin`)
 
 // Database
 mongoose.connect(`mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSOurce=admin`, {
 
 })
     .then(() => {
+        
         console.log("Database connected");
     }).catch(e => console.log(e))
 
